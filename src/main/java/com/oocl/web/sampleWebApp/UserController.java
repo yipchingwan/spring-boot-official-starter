@@ -15,7 +15,7 @@ public class UserController {
     @PostMapping(path = "/{userID}", produces = {"application/json"})
     public ResponseEntity<String> getAll(@PathVariable String userID) {
 
-        return ResponseEntity.created(URI.create("/users/"+userID)).body("This is message body for"+userID);
+        return ResponseEntity.created(URI.create("/users/"+userID)).body("This is message body for "+userID);
     }
 
 }
