@@ -24,7 +24,7 @@ public class UserControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void shouldReturnDefaultMessage() throws Exception {
+    public void shouldReturnStatusCodeAndLocationHeader() throws Exception {
         String userID = "myID";
         this.mockMvc.perform(post("/users/"+userID)).andDo(print()).andExpect(status().isCreated())
                 .andExpect(content().string(containsString("This is message body for "+userID))).andExpect(redirectedUrl("/users/"+userID));
