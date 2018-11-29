@@ -12,9 +12,18 @@ import java.util.logging.Logger;
 @RestController
 @RequestMapping("/users")
 public class UserController {
+    private UserService userService;
+
+    @Autowired
+    public UserController(UserService userService){
+        this.userService = userService;
+
+
+    }
+
     @PostMapping(path = "/{userID}", produces = {"application/json"})
     public ResponseEntity<String> getAll(@PathVariable String userID) {
-
+        userService.addUser(new User(userID));
         return ResponseEntity.created(URI.create("/users/"+userID)).body("This is message body for "+userID);
     }
 
